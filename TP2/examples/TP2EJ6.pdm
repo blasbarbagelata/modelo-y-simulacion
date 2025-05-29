@@ -1,0 +1,287 @@
+Coupled
+    {
+    Type = Root
+    Name = TP2EJ6
+    Ports = 0; 0
+    Description = 
+    Graphic
+        {
+        Position = 0; 0
+        Dimension = 600; 600
+        Direction = Right
+        Color = 15
+        Icon = 
+        Window = 5000; 5000; 5000; 5000
+        }
+    Parameters
+        {
+        }
+    System
+        {
+        Atomic
+            {
+            Name = Constante
+            Ports = 0 ; 1
+            Path = tp_devs/constante.h
+            Description = Atomic DEVS model
+            Graphic
+                {
+                Position = -16980 ; -1905
+                Dimension = 675 ; 675
+                Direction = Right
+                Color = 15
+                Icon = None
+                }
+            Parameters
+                {
+                }
+            }
+        Atomic
+            {
+            Name = Fuente
+            Ports = 0 ; 1
+            Path = tp_devs/fuente.h
+            Description = Atomic DEVS model
+            Graphic
+                {
+                Position = -16515 ; -3330
+                Dimension = 1230 ; 675
+                Direction = Right
+                Color = 15
+                Icon = None
+                }
+            Parameters
+                {
+                jim = Val; 0.02 ; 
+                jmax = Val; 0.12 ; 
+                tmin = Val; 0 ; 
+                tmax = Val; 0.1 ; 
+                }
+            }
+        Atomic
+            {
+            Name = Filtro0
+            Ports = 2 ; 2
+            Path = tp_devs/filtro.h
+            Description = Atomic DEVS model
+            Graphic
+                {
+                Position = -12555 ; -4080
+                Dimension = 675 ; 675
+                Direction = Right
+                Color = 15
+                Icon = None
+                }
+            Parameters
+                {
+                }
+            }
+        Atomic
+            {
+            Name = GnuPlot0
+            Ports = 4 ; 0
+            Path = sinks/gnuplot.h
+            Description = Plot input signal using GnuPlot
+            Graphic
+                {
+                Position = -2580 ; -2580
+                Dimension = 675 ; 675
+                Direction = Right
+                Color = 15
+                Icon = %sinks%gnuplot.svg
+                }
+            Parameters
+                {
+                Inputs = Str; %Inputs ; Number of inputs
+                Format = Str; set xrange [0:%tf] @ set grid @ set title 'Plot' ; General Formatting (use @ as line break)
+                Format1 = Str; with impulse title 'Fuente' ; Formatting options for input 1
+                Format2 = Str; with impulse title 'procesador' ; Formatting options for input 2
+                Format3 = Str; with impulse title 'muestreador' ; Formatting options for input 3
+                Format4 = Str; with steps title 'sensor' ; Formatting options for input 4
+                Format5 = Str;  ; Formatting options for input 5
+                }
+            }
+        Atomic
+            {
+            Name = procesador
+            Ports = 1 ; 1
+            Path = tp_devs/procesador.h
+            Description = Atomic DEVS model
+            Graphic
+                {
+                Position = -7005 ; 165
+                Dimension = 675 ; 720
+                Direction = Right
+                Color = 15
+                Icon = None
+                }
+            Parameters
+                {
+                }
+            }
+        Atomic
+            {
+            Name = Sensor
+            Ports = 2 ; 1
+            Path = tp_devs/sensor.h
+            Description = Atomic DEVS model
+            Graphic
+                {
+                Position = -7605 ; -5205
+                Dimension = 675 ; 675
+                Direction = Right
+                Color = 15
+                Icon = None
+                }
+            Parameters
+                {
+                }
+            }
+        Atomic
+            {
+            Name = Cola
+            Ports = 2 ; 1
+            Path = tp_devs/cola.h
+            Description = Atomic DEVS model
+            Graphic
+                {
+                Position = -8985 ; -1530
+                Dimension = 420 ; 960
+                Direction = Right
+                Color = 15
+                Icon = None
+                }
+            Parameters
+                {
+                }
+            }
+        Atomic
+            {
+            Name = muestreador
+            Ports = 1 ; 1
+            Path = tp_devs/muestreador.h
+            Description = Atomic DEVS model
+            Graphic
+                {
+                Position = -5505 ; -5310
+                Dimension = 675 ; 720
+                Direction = Right
+                Color = 15
+                Icon = None
+                }
+            Parameters
+                {
+                T = Val; 1 ; 
+                }
+            }
+        Point
+            {
+            ConectedLines = 1 ; 2 ; 3
+            ConectedExtrems = Org ; Org ; Org
+            Position = -7950 ; -1050
+            }
+        Point
+            {
+            ConectedLines = 6 ; 7 ; 9
+            ConectedExtrems = Org ; Org ; Org
+            Position = -9300 ; -2475
+            }
+        Point
+            {
+            ConectedLines = 10 ; 12 ; 13
+            ConectedExtrems = Org ; Org ; Org
+            Position = -6525 ; -4950
+            }
+        Line
+            {
+            Source = Cmp ;  7 ;  1 ; 0
+            Sink = Pnt ;  1 ; -1 ; 0
+            PointX = -8400 ; -8400 ; -7950
+            PointY = -1050 ; -1050 ; -1050
+            }
+        Line
+            {
+            Source = Cmp ;  6 ;  2 ; -1
+            Sink = Pnt ;  1 ; -1 ; 0
+            PointX = -7740 ; -7950 ; -7950
+            PointY = -4725 ; -4725 ; -1050
+            }
+        Line
+            {
+            Source = Pnt ;  1 ; -1 ; 0
+            Sink = Cmp ;  5 ;  1 ; -1
+            PointX = -7950 ; -7140 ; -7140
+            PointY = -1050 ; -1050 ; 525
+            }
+        Line
+            {
+            Source = Cmp ;  5 ;  1 ; 0
+            Sink = Cmp ;  7 ;  2 ; -1
+            PointX = -6225 ; -5625 ; -5625 ; -6075 ; -6075 ; -10275 ; -10275 ; -9165
+            PointY = 525 ; 525 ; 2475 ; 2475 ; 3150 ; 3150 ; -825 ; -825
+            }
+        Line
+            {
+            Source = Cmp ;  1 ;  1 ; 0
+            Sink = Cmp ;  3 ;  2 ; -1
+            PointX = -16200 ; -16200 ; -12690 ; -12690
+            PointY = -1575 ; -1575 ; -1575 ; -3600
+            }
+        Line
+            {
+            Source = Cmp ;  7 ;  1 ; -1
+            Sink = Pnt ;  2 ; -1 ; 0
+            PointX = -9165 ; -9165 ; -9300
+            PointY = -1275 ; -2475 ; -2475
+            }
+        Line
+            {
+            Source = Cmp ;  6 ;  1 ; -1
+            Sink = Pnt ;  2 ; -1 ; 0
+            PointX = -7740 ; -9300 ; -9300
+            PointY = -5025 ; -5025 ; -2475
+            }
+        Line
+            {
+            Source = Cmp ;  2 ;  1 ; 0
+            Sink = Cmp ;  3 ;  1 ; -1
+            PointX = -15150 ; -15150 ; -12690 ; -12690
+            PointY = -3000 ; -3000 ; -3000 ; -3900
+            }
+        Line
+            {
+            Source = Pnt ;  2 ; -1 ; 0
+            Sink = Cmp ;  3 ;  1 ; 0
+            PointX = -9300 ; -9300 ; -11775 ; -11775
+            PointY = -2475 ; -2475 ; -2475 ; -3900
+            }
+        Line
+            {
+            Source = Cmp ;  8 ;  1 ; -1
+            Sink = Pnt ;  3 ; -1 ; 0
+            PointX = -5640 ; -5640 ; -6525
+            PointY = -4950 ; -4950 ; -4950
+            }
+        Line
+            {
+            Source = Cmp ;  4 ;  3 ; -1
+            Sink = Cmp ;  8 ;  1 ; 0
+            PointX = -2715 ; -4725 ; -4725
+            PointY = -2175 ; -2175 ; -4950
+            }
+        Line
+            {
+            Source = Cmp ;  4 ;  4 ; -1
+            Sink = Pnt ;  3 ; -1 ; 0
+            PointX = -2715 ; -6525 ; -6525
+            PointY = -2025 ; -2025 ; -4950
+            }
+        Line
+            {
+            Source = Pnt ;  3 ; -1 ; 0
+            Sink = Cmp ;  6 ;  1 ; 0
+            PointX = -6525 ; -6825 ; -6825
+            PointY = -4950 ; -4950 ; -4875
+            }
+        }
+    }

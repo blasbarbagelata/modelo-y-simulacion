@@ -1,0 +1,49 @@
+Root-Coordinator
+ {
+  Simulator
+   {
+    Path = tp_devs/fuente.h
+    Parameters = 2.000000e-02,1.200000e-01,0.000000e+00,1.000000e-01
+   }
+  Simulator
+   {
+    Path = sinks/gnuplot.h
+    Parameters = 2.000000e+00,"set xrange [0:%tf] @ set grid @ set title 'Plot'","with impulse title 'Fuente'","with impulse title 'procesador'","","",""
+   }
+  Simulator
+   {
+    Path = tp_devs/cola.h
+    Parameters = 
+   }
+  Simulator
+   {
+    Path = tp_devs/procesador.h
+    Parameters = 
+   }
+  Simulator
+   {
+    Path = sinks/toscilab_offline.h
+    Parameters = "tf","yf"
+   }
+  Simulator
+   {
+    Path = sinks/toscilab_offline.h
+    Parameters = "tp","yp"
+   }
+  EIC
+   {
+   }
+  EOC
+   {
+   }
+  IC
+   {
+    (0,0);(2,0)
+    (2,0);(3,0)
+    (3,0);(2,1)
+    (0,0);(1,0)
+    (3,0);(1,1)
+    (0,0);(4,0)
+    (3,0);(5,0)
+   }
+ }
